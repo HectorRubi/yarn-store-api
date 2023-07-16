@@ -1,4 +1,5 @@
 const express = require('express')
+const { faker } = require('@faker-js/faker')
 const app = express()
 const port = 3000
 
@@ -11,16 +12,21 @@ app.get('/nueva-ruta', (req, res) => {
 })
 
 app.get('/products', (req, res) => {
-  res.json([
-    {
-      name: 'Producto 1',
-      price: 1000
-    },
-    {
-      name: 'Producto 2',
-      price: 2000
-    }
-  ])
+  const limit = req.query.size || 10
+  const products = []
+  for (let index = 0; index < limit; index++) {
+    products.push({
+      id: index,
+      name: faker.commerce.productName(),
+      price: faker.commerce.price(),
+      image: faker.image.url()
+    })
+  }
+  res.json(products)
+})
+
+app.get('/products/filter', (req, res) => {
+  res.send('Yo soy un filter')
 })
 
 app.get('/products/:id', (req, res) => {
