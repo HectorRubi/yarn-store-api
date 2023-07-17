@@ -7,15 +7,19 @@ class ProductService {
     this._generate()
   }
 
-  find() {
-    return this.products
+  async find() {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(this.products)
+      }, 5000)
+    })
   }
 
-  findOne(id) {
+  async findOne(id) {
     return this.products.find(product => product.id === id)
   }
 
-  create(data) {
+  async create(data) {
     const { name, price, image } = data
     const newProduct = {
       id: faker.string.uuid(),
@@ -27,7 +31,7 @@ class ProductService {
     return newProduct
   }
 
-  update(id, body) {
+  async update(id, body) {
     const index = this.products.findIndex(product => product.id === id)
     if (index === -1) {
       throw new Error('Product not found')
@@ -40,7 +44,7 @@ class ProductService {
     return this.products[index]
   }
 
-  delete(id) {
+  async delete(id) {
     const index = this.products.findIndex(product => product.id === id)
     if (index === -1) {
       throw new Error('Product not found')
