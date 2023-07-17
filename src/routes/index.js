@@ -5,6 +5,7 @@ const usersRouter = require('./users.router')
 const categoriesRouter = require('./categories.router')
 
 function routerApi(app) {
+  // Create routing in modules
   const router = express.Router()
   app.use('/api/v1', router)
 
