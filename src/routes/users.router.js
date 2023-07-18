@@ -47,7 +47,7 @@ router.route('/:id')
     try {
       const { id } = req.params
       const body = req.body
-      const user = {id, body}
+      const user = await userService.update(id, body)
       res.json({
         message: 'updated',
         data: user,

@@ -38,7 +38,28 @@ class UserServie {
     this.users.push(newProduct)
     return newProduct
   }
-  update() {}
+
+  async update(id, body) {
+    const userIndex = this.users.findIndex((user) => user.id === id)
+
+    if (userIndex === -1) {
+      throw boom.notFound('User not found')
+    }
+
+    const user = this.users[userIndex]
+
+    if (!user.isActive) {
+      throw boom.conflict('User is inactive')
+    }
+
+    this.users[userIndex] = {
+      ...user,
+      ...body,
+    }
+
+    return this.users[userIndex]
+  }
+
   delete() {}
 
   _generate(size = 100) {
