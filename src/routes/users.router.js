@@ -35,7 +35,7 @@ router.route('/:id')
   async (req, res, next) => {
     try {
       const { id } = req.params
-      const user = {id}
+      const user = await userService.findOne(id)
       res.json(user)
     } catch (error) {
       next(error)
