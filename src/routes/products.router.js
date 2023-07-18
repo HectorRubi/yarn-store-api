@@ -44,7 +44,6 @@ router.route('/:id')
     res.status(200).json({
       message: 'updated',
       data: product,
-      id,
     })
   } catch (error) {
     next(error)
@@ -56,7 +55,6 @@ router.route('/:id')
   res.json({
     message: 'deleted',
     body: product,
-    id,
   })
 })
 
