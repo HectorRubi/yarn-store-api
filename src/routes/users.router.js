@@ -19,7 +19,7 @@ router.route('/')
   async (req, res, next) => {
     try {
       const body = req.body
-      const newProduct = body
+      const newProduct = await userService.create(body)
       res.status(201).json({
         message: 'created',
         data: newProduct

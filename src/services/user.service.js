@@ -11,7 +11,19 @@ class UserServie {
   }
 
   findOne() {}
-  create() {}
+  async create(data) {
+    const { name, gender, email, profile, password } = data
+    const newProduct = {
+      id: faker.string.uuid(),
+      name,
+      gender,
+      email,
+      profile,
+      password,
+    }
+    this.users.push(newProduct)
+    return newProduct
+  }
   update() {}
   delete() {}
 
@@ -21,7 +33,7 @@ class UserServie {
       this.users.push({
         id: faker.string.uuid(),
         name: faker.person.fullName(),
-        gender: faker.person.gender(),
+        gender: faker.person.sex(),
         email: faker.internet.email(),
         profile: faker.image.avatar(),
         password: faker.internet.password({ length: 30 }),
