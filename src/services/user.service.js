@@ -60,7 +60,22 @@ class UserServie {
     return this.users[userIndex]
   }
 
-  delete() {}
+  async delete(id) {
+    const userIndex = this.users.findIndex((user) => user.id === id)
+
+    if (userIndex === -1) {
+      throw boom.notFound('User not found')
+    }
+
+    const user = this.users[userIndex]
+
+    if (!user.isActive) {
+      throw boom.conflict('User is inactive')
+    }
+
+    const deletedUser = this.users.splice(userIndex, 1)
+    return deletedUser
+  }
 
   _generate(size = 100) {
     const limit = size
