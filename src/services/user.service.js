@@ -34,6 +34,7 @@ class UserServie {
       email,
       profile,
       password,
+      isActive: true,
     }
     this.users.push(newProduct)
     return newProduct
