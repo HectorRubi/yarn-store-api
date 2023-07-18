@@ -1,5 +1,4 @@
 const { faker } = require('@faker-js/faker')
-const boom = require('@hapi/boom')
 
 class UserServie {
   constructor() {
@@ -7,7 +6,10 @@ class UserServie {
     this._generate()
   }
 
-  find() {}
+  async find() {
+    return this.users
+  }
+
   findOne() {}
   create() {}
   update() {}

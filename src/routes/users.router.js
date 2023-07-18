@@ -1,12 +1,14 @@
 const express = require('express')
+const UserServie = require('./../services/user.service')
 
 const router = express.Router()
+const userService = new UserServie()
 
 router.route('/')
 .get(
   async (req, res, next) => {
     try {
-      const users = []
+      const users = await userService.find()
       res.json(users)
     } catch (error) {
       next(error)
