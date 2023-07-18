@@ -13,20 +13,7 @@ const port = 3000
 
 // Add middleware to allow express recieve data in JSON format
 app.use(express.json())
-const whitelist = [
-  'http://localhost:8080',
-  'https://myapp.com',
-]
-const options = {
-  origin: (origin, callback) => {
-    if (whitelist.includes(origin) || origin) {
-      callback(null, true)
-    } else {
-      callback(new Error('Access Denied'))
-    }
-  }
-}
-app.use(cors(options))
+app.use(cors())
 
 // Home page Doc
 app.get('/', (req, res) => {
