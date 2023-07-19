@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Home Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f7f7f7;
+    }
+
+    header {
+      background-color: #4285f4;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+    }
+
+    h1 {
+      margin: 0;
+    }
+
+    nav {
+      background-color: #333;
+      padding: 10px;
+    }
+
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    li {
+      margin: 0 10px;
+    }
+
+    li>a {
+      color: #fff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+    }
+
+    li>a:hover {
+      background-color: #555;
+    }
+
+    p>a {
+      color: #555;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+      border: 1px solid #555;
+    }
+
+    p>a:hover {
+      background-color: #555;
+      color: #fff;
+    }
+
+    section {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      color: #4285f4;
+      border-bottom: 2px solid #4285f4;
+      padding-bottom: 8px;
+    }
+
+    h3 {
+      color: #333;
+    }
+
+    footer {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 10px;
+      width: 100%;
+    }
+
+    .right {
+      text-align: right;
+    }
+
+    code {
+      background-color: #333;
+      padding: 2px 4px;
+      border-radius: 4px;
+      color: #fff;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    th:first-child, td:first-child {
+      border-left: none;
+    }
+
+    th:last-child, td:last-child {
+      border-right: none;
+    }
+
+    tbody tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Welcome to YarnStore API</h1>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#github">GitHub Code</a></li>
+      <li><a href="#documentation">Documentation</a></li>
+    </ul>
+  </nav>
+
+  <section id="github">
+    <h2>GitHub</h2>
+    <!-- Add a brief description of your API here -->
+    <p>The API is built on the popular and lightweight web framework Express.js, making it efficient, scalable, and easy to use. The backend leverages Node.js, providing a non-blocking, event-driven architecture that ensures fast and responsive performance.</p>
+    <p class="right"><a href="https://github.com/HectorRubi/yarn-store-node">Explore the code here</a></p>
+  </section>
+
+  <section id="documentation">
+    <h2>Documentation</h2>
+    <!-- Add a brief description of your documentation here -->
+    <p>Welcome to the official documentation for the Express.js CRUD API, a powerful RESTful API that allows you to interact with product, user, and category data. This documentation will guide you through the various endpoints and operations available, empowering you to perform Create, Read, Update, and Delete (CRUD) operations on the resources seamlessly.</p>
+
+    <h3>Base URL</h3>
+    <p>The base URL for all API requests is: <code>https://yarnstoreapi.onrender.com/api/v1</code></p>
+
+    <h2>Endpoints</h2>
+    <!-- Table for Endpoints -->
+    <table>
+      <thead>
+        <tr>
+          <th>Endpoint</th>
+          <th>Method</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>/products</td>
+          <td>GET</td>
+          <td>Retrieve a list of all products available in the system.</td>
+        </tr>
+        <tr>
+          <td>/products</td>
+          <td>POST</td>
+          <td>Create a new product.</td>
+        </tr>
+        <tr>
+          <td>/products/{uuid}</td>
+          <td>GET</td>
+          <td>Retrieve a single product available in the system.</td>
+        </tr>
+        <tr>
+          <td>/products/{uuid}</td>
+          <td>PATCH</td>
+          <td>Update a product available in the system.</td>
+        </tr>
+        <tr>
+          <td>/products/{uuid}</td>
+          <td>DELTE</td>
+          <td>Delete a single product available in the system.</td>
+        </tr>
+
+        <tr>
+          <td>/users</td>
+          <td>GET</td>
+          <td>Retrieve a list of all users available in the system.</td>
+        </tr>
+        <tr>
+          <td>/users</td>
+          <td>POST</td>
+          <td>Create a new user.</td>
+        </tr>
+        <tr>
+          <td>/users/{uuid}</td>
+          <td>GET</td>
+          <td>Retrieve a single user available in the system.</td>
+        </tr>
+        <tr>
+          <td>/users/{uuid}</td>
+          <td>PATCH</td>
+          <td>Update a user available in the system.</td>
+        </tr>
+        <tr>
+          <td>/users/{uuid}</td>
+          <td>DELTE</td>
+          <td>Delete a single user available in the system.</td>
+        </tr>
+
+        <tr>
+          <td>/categories</td>
+          <td>GET</td>
+          <td>Retrieve a list of all categories available in the system.</td>
+        </tr>
+        <tr>
+          <td>/categories</td>
+          <td>POST</td>
+          <td>Create a new category.</td>
+        </tr>
+        <tr>
+          <td>/categories/{uuid}</td>
+          <td>GET</td>
+          <td>Retrieve a single category available in the system.</td>
+        </tr>
+        <tr>
+          <td>/categories/{uuid}</td>
+          <td>PATCH</td>
+          <td>Update a category available in the system.</td>
+        </tr>
+        <tr>
+          <td>/categories/{uuid}</td>
+          <td>DELTE</td>
+          <td>Delete a single category available in the system.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Response Format</h3>
+    <p>The API returns responses in JSON format, containing relevant data or error messages. Successful requests will include a <code>200 OK</code> status code, while errors will have appropriate HTTP status codes along with descriptive error messages.</p>
+
+    <h3>Conclusion</h3>
+    <p>With this comprehensive documentation, you can now integrate and leverage the YarnStore API to manage product, user, and category data in your applications. If you encounter any issues or have further questions, please feel free to contact our support team.</p>
+
+    <p>Thank you for choosing our API, and happy coding!</p>
+    <p class="right"><a href="#">Read the full documentation here</a></p>
+  </section>
+
+  <footer>
+    <p>&copy; 2023 Hector Rubi. All rights reserved.</p>
+  </footer>
+</body>
+
+</html>
