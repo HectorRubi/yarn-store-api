@@ -62,7 +62,7 @@ class CategoryService {
   _generate(size = 10) {
     const limit = size
     for (let index = 0; index < limit; index++) {
-      this.products.push({
+      this.categories.push({
         id: faker.string.uuid(),
         name: faker.word.noun(),
       })
