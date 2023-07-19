@@ -61,8 +61,11 @@ router.route('/:id')
   async (req, res, next) => {
     try {
       const { id } = req.params
-      const category = {id}
-      res.json(category)
+      const category = await categoryService.delete(id)
+      res.json({
+        message: 'deleted',
+        data: category,
+      })
     } catch (error) {
       next(error)
     }

@@ -47,6 +47,18 @@ class CategoryService {
     return this.categories[categoryIndex]
   }
 
+  async delete(id) {
+    const categoryIndex = this.categories.findIndex((category) => category.id === id)
+
+    if (categoryIndex === -1) {
+      throw boom.notFound('Category not found')
+    }
+
+    const deletedCategory = this.categories.splice(categoryIndex, 1)
+
+    return deletedCategory
+  }
+
   _generate(size = 10) {
     const limit = size
     for (let index = 0; index < limit; index++) {
