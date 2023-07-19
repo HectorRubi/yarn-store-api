@@ -19,7 +19,7 @@ router.route('/')
   async (req, res, next) => {
     try {
       const body = req.body;
-      const category = {...body}
+      const category = await categoryService.create(body)
       res.status(201).json({
         message: 'created',
         data: category,

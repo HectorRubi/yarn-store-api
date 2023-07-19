@@ -21,6 +21,16 @@ class CategoryService {
     return category
   }
 
+  async create(data) {
+    const { name } = data
+    const newCategory = {
+      id: faker.string.uuid(),
+      name,
+    }
+    this.categories.push(newCategory)
+    return newCategory
+  }
+
   _generate(size = 10) {
     const limit = size
     for (let index = 0; index < limit; index++) {
