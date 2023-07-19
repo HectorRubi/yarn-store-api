@@ -8,8 +8,8 @@ router.route('/')
 .get(
   async (req, res, next) => {
     try {
-      const users = await categoryService.find()
-      res.json(users)
+      const categories = await categoryService.find()
+      res.json(categories)
     } catch (error) {
       next(error)
     }
@@ -19,10 +19,10 @@ router.route('/')
   async (req, res, next) => {
     try {
       const body = req.body;
-      const user = {...body}
+      const category = {...body}
       res.status(201).json({
         message: 'created',
-        data: user,
+        data: category,
       })
     } catch (error) {
       next(error)
@@ -35,8 +35,8 @@ router.route('/:id')
   async (req, res, next) => {
     try {
       const { id } = req.params
-      const user = {id}
-      res.json(user)
+      const category = await categoryService.findOne(id)
+      res.json(category)
     } catch (error) {
       next(error)
     }
@@ -47,8 +47,8 @@ router.route('/:id')
     try {
       const { id } = req.params
       const body = req.body
-      const user = {id, body}
-      res.json(user)
+      const category = {id, body}
+      res.json(category)
     } catch (error) {
       next(error)
     }
@@ -58,8 +58,8 @@ router.route('/:id')
   async (req, res, next) => {
     try {
       const { id } = req.params
-      const user = {id}
-      res.json(user)
+      const category = {id}
+      res.json(category)
     } catch (error) {
       next(error)
     }
