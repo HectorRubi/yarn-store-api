@@ -47,8 +47,11 @@ router.route('/:id')
     try {
       const { id } = req.params
       const body = req.body
-      const category = {id, body}
-      res.json(category)
+      const category = await categoryService.update(id, body)
+      res.json({
+        message: 'updated',
+        data: category,
+      })
     } catch (error) {
       next(error)
     }
