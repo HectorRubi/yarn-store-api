@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const cors = require('cors');
 const helmet = require('helmet');
 const routerApi = require('./routes');
@@ -19,7 +20,7 @@ app.use(helmet());
 
 // Home page Doc
 app.get('/', (req, res) => {
-  res.send('<h1>Hello world</h1>');
+  res.sendFile(path.join(__dirname, '/public/index.html'));
 });
 
 // Routes
