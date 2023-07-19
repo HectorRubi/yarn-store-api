@@ -6,6 +6,10 @@ class CategoryService {
     this._generate()
   }
 
+  async find() {
+    return this.categories
+  }
+
   _generate(size = 10) {
     const limit = size
     for (let index = 0; index < limit; index++) {

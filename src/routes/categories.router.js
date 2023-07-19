@@ -1,12 +1,14 @@
 const express = require('express')
+const CategoryService = require('./../services/category.service')
 
 const router = express.Router()
+const categoryService = new CategoryService()
 
 router.route('/')
 .get(
   async (req, res, next) => {
     try {
-      const users = []
+      const users = await categoryService.find()
       res.json(users)
     } catch (error) {
       next(error)
