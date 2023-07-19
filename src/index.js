@@ -1,5 +1,6 @@
 const express = require('express')
 const cors = require('cors')
+const helmet = require('helmet')
 const routerApi = require('./routes')
 const {
   logErrors,
@@ -14,6 +15,7 @@ const port = 3000
 // Add middleware to allow express recieve data in JSON format
 app.use(express.json())
 app.use(cors())
+app.use(helmet())
 
 // Home page Doc
 app.get('/', (req, res) => {
