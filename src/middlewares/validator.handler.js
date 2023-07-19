@@ -13,4 +13,14 @@ function validatorHandler(schema, property) {
   }
 }
 
-module.exports = validatorHandler
+function validateSchema(schema, data) {
+  const { error, value } = schema.validate(data, { abortEarly: false })
+
+  if (error) {
+    throw boom.badRequest(error)
+  }
+
+  return value
+}
+
+module.exports = { validatorHandler, validateSchema }
