@@ -1,5 +1,11 @@
 const express = require('express')
 const UserServie = require('./../services/user.service')
+const { validatorHandler, validateSchema } = require('./../middlewares/validator.handler')
+const {
+  createUserSchema,
+  updateUserSchema,
+  idUserSchema,
+} = require('./../schemas/user.schema')
 
 const router = express.Router()
 const userService = new UserServie()
@@ -19,7 +25,8 @@ router.route('/')
   async (req, res, next) => {
     try {
       const body = req.body
-      const newProduct = await userService.create(body)
+      const value = validateSchema(createUserSchema, body)
+      const newProduct = await userService.create(value)
       res.status(201).json({
         message: 'created',
         data: newProduct
@@ -32,6 +39,7 @@ router.route('/')
 
 router.route('/:id')
 .get(
+  validatorHandler(idUserSchema, 'params'),
   async (req, res, next) => {
     try {
       const { id } = req.params
@@ -43,6 +51,8 @@ router.route('/:id')
   }
 )
 .patch(
+  validatorHandler(idUserSchema, 'params'),
+  validatorHandler(updateUserSchema, 'body'),
   async (req, res, next) => {
     try {
       const { id } = req.params
@@ -58,6 +68,7 @@ router.route('/:id')
   }
 )
 .delete(
+  validatorHandler(idUserSchema, 'params'),
   async (req, res, next) => {
     try {
       const { id } = req.params
