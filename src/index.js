@@ -7,6 +7,7 @@ const {
   logErrors,
   errorHandler,
   boomErrorHandler,
+  sequelizeErrorHandler,
 } = require('./middlewares/error.handler');
 
 // Create Server
@@ -28,6 +29,7 @@ routerApi(app);
 
 // Middlewares
 app.use(logErrors);
+app.use(sequelizeErrorHandler);
 app.use(boomErrorHandler);
 app.use(errorHandler);
 
