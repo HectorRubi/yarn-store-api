@@ -3,29 +3,33 @@ const { Model, DataTypes, Sequelize } = require('sequelize');
 const USER_TABLE = 'users';
 const UserSchema = {
   id: {
+    type: DataTypes.INTEGER,
     allowNull: false,
     autoIncrement: true,
     primaryKey: true,
-    type: DataTypes.INTEGER,
+  },
+  name: {
+    type: DataTypes.STRING,
+    allowNull: false,
   },
   email: {
-    allowNull: false,
     type: DataTypes.STRING,
+    allowNull: false,
     unique: true,
   },
   password: {
-    allowNull: false,
     type: DataTypes.STRING,
+    allowNull: false,
   },
   createdAt: {
-    allowNull: false,
     type: DataTypes.DATE,
+    allowNull: false,
     field: 'create_at',
     defaultValue: Sequelize.NOW,
   },
   updatedAt: {
-    allowNull: false,
     type: DataTypes.DATE,
+    allowNull: false,
     field: 'update_at',
     defaultValue: Sequelize.NOW,
   },
