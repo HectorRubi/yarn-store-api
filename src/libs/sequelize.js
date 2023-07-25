@@ -11,6 +11,6 @@ const sequelize = new Sequelize(URI, { dialect: DIALECT, logging: true });
 
 setupModels(sequelize);
 
-sequelize.sync();
+// sequelize.sync();
 
 module.exports = sequelize;
