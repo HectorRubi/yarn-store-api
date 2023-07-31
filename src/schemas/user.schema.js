@@ -10,6 +10,7 @@ const name = joi.string().min(1).max(30);
 const email = joi.string().email();
 // const profile = joi.string().uri();
 const password = joi.string().min(8);
+const role = joi.string().min(5);
 // const isActive = joi.boolean();
 
 const createUserSchema = joi.object({
@@ -18,6 +19,7 @@ const createUserSchema = joi.object({
   email: email.required(),
   // profile: profile.required(),
   password: password.required(),
+  role: role.required(),
 });
 
 const updateUserSchema = joi
@@ -28,6 +30,7 @@ const updateUserSchema = joi
     // profile,
     password,
     // isActive,
+    role,
   })
   .min(1);
 
