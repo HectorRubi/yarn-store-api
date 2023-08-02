@@ -1,5 +1,5 @@
 const express = require('express');
-const UserServie = require('./../services/user.service');
+const UserService = require('./../services/user.service');
 const {
   validatorHandler,
   validateSchema,
@@ -11,7 +11,7 @@ const {
 } = require('./../schemas/user.schema');
 
 const router = express.Router();
-const userService = new UserServie();
+const userService = new UserService();
 
 router
   .route('/')
