@@ -11,25 +11,28 @@ const CustomerSchema = {
   },
   name: {
     type: DataTypes.STRING,
+    allowNull: false,
   },
   lastName: {
     type: DataTypes.STRING,
+    allowNull: false,
     field: 'last_name',
   },
   phone: {
     type: DataTypes.STRING,
+    allowNull: false,
   },
   createdAt: {
     allowNull: false,
     field: 'create_at',
     type: DataTypes.DATE,
-    default: Sequelize.NOW,
+    defaultValue: Sequelize.NOW,
   },
   updatedAt: {
     allowNull: false,
     field: 'update_at',
     type: DataTypes.DATE,
-    default: Sequelize.NOW,
+    defaultValue: Sequelize.NOW,
   },
   userId: {
     field: 'user_id',
