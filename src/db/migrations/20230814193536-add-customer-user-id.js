@@ -7,11 +7,14 @@ const {
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface) {
-    await queryInterface.addColumn(
-      CUSTOMER_TABLE,
-      'user_id',
-      CustomerSchema.userId,
-    );
+    const table = await queryInterface.describeTable(CUSTOMER_TABLE);
+    if (!table.user_id) {
+      await queryInterface.addColumn(
+        CUSTOMER_TABLE,
+        'user_id',
+        CustomerSchema.userId,
+      );
+    }
   },
 
   async down(queryInterface) {
