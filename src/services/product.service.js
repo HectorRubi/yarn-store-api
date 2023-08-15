@@ -11,8 +11,8 @@ class ProductService {
   }
 
   async find() {
-    const [data] = await sequelize.query('SELECT * FROM task');
-    return data;
+    const products = await sequelize.models.Product.findAll();
+    return products;
   }
 
   async findOne(id) {
@@ -30,14 +30,7 @@ class ProductService {
   }
 
   async create(data) {
-    const { name, price, image } = data;
-    const newProduct = {
-      id: faker.string.uuid(),
-      name: name,
-      price: price,
-      image: image,
-    };
-    this.products.push(newProduct);
+    const newProduct = sequelize.models.Product.create(data);
     return newProduct;
   }
 

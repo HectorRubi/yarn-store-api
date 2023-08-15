@@ -1,6 +1,8 @@
 const { faker } = require('@faker-js/faker');
 const boom = require('@hapi/boom');
 
+const { models } = require('./../libs/sequelize');
+
 class CategoryService {
   constructor() {
     this.categories = [];
@@ -22,12 +24,7 @@ class CategoryService {
   }
 
   async create(data) {
-    const { name } = data;
-    const newCategory = {
-      id: faker.string.uuid(),
-      name,
-    };
-    this.categories.push(newCategory);
+    const newCategory = await models.Category.create(data);
     return newCategory;
   }
 
