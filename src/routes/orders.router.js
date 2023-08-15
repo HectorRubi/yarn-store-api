@@ -1,7 +1,10 @@
 const express = require('express');
 const { OrderService } = require('./../services/order.service');
 const { validateSchema } = require('./../middlewares/validator.handler');
-const { createOrderSchema } = require('./../schemas/order.schema');
+const {
+  createOrderSchema,
+  addItemSchema,
+} = require('./../schemas/order.schema');
 
 const router = express.Router();
 const orderService = new OrderService();
@@ -25,5 +28,15 @@ router
       next(error);
     }
   });
+
+router.route('/items').post(async (req, res, next) => {
+  try {
+    const data = validateSchema(addItemSchema, req.body);
+    const newItem = await orderService.addItem(data);
+    return res.status(201).json(newItem);
+  } catch (error) {
+    next(error);
+  }
+});
 
 module.exports = router;
