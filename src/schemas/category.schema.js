@@ -16,7 +16,7 @@ const updateCategorySchema = joi
   .min(1);
 
 const idCategorySchema = joi.object({
-  id: joi.string().uuid().required(),
+  id: joi.number().integer().required(),
 });
 
 module.exports = {
