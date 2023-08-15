@@ -1,7 +1,9 @@
 const { faker } = require('@faker-js/faker');
 const boom = require('@hapi/boom');
 
-const { models } = require('./../libs/sequelize');
+const {
+  models: { Category },
+} = require('./../libs/sequelize');
 
 class CategoryService {
   constructor() {
@@ -10,11 +12,11 @@ class CategoryService {
   }
 
   async find() {
-    return await models.Category.findAll();
+    return await Category.findAll();
   }
 
   async findOne(id) {
-    const category = await models.Category.findByPk(id, {
+    const category = await Category.findByPk(id, {
       include: ['products'],
     });
 
@@ -26,7 +28,7 @@ class CategoryService {
   }
 
   async create(data) {
-    const newCategory = await models.Category.create(data);
+    const newCategory = await Category.create(data);
     return newCategory;
   }
 

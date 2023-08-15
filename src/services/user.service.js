@@ -2,11 +2,13 @@ const boom = require('@hapi/boom');
 
 // const getConnection = require('./../libs/postgres');
 // const pool = require('./../libs/postgres.pool');
-const { models } = require('./../libs/sequelize');
+const {
+  models: { User },
+} = require('./../libs/sequelize');
 
-class UserServie {
+class UserService {
   async find() {
-    const users = await models.User.findAll({
+    const users = await User.findAll({
       include: ['customer'],
     });
     return users;
@@ -18,7 +20,7 @@ class UserServie {
   }
 
   async create(data) {
-    const newUser = await models.User.create(data);
+    const newUser = await User.create(data);
     return newUser;
   }
 
@@ -35,7 +37,7 @@ class UserServie {
   }
 
   async _findUserById(id) {
-    const user = await models.User.findByPk(id);
+    const user = await User.findByPk(id);
     if (!user) {
       throw boom.notFound('User not found');
     }
@@ -43,4 +45,4 @@ class UserServie {
   }
 }
 
-module.exports = UserServie;
+module.exports = UserService;

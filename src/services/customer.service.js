@@ -1,17 +1,19 @@
-const { models } = require('./../libs/sequelize');
+const {
+  models: { Customer },
+} = require('./../libs/sequelize');
 
-class Customer {
+class CustomerService {
   async find() {
-    const customers = await models.Customer.findAll({
+    const customers = await Customer.findAll({
       include: ['user'],
     });
     return customers;
   }
 
   async create(data) {
-    const customer = await models.Customer.create(data);
+    const customer = await Customer.create(data);
     return customer;
   }
 }
 
-module.exports = Customer;
+module.exports = CustomerService;

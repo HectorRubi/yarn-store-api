@@ -1,12 +1,14 @@
-const { models } = require('./../libs/sequelize');
+const {
+  models: { Order },
+} = require('./../libs/sequelize');
 
 class OrderService {
   async find() {
-    return await models.Order.findAll();
+    return await Order.findAll();
   }
 
   async create(data) {
-    const newOrder = await models.Order.create(data);
+    const newOrder = await Order.create(data);
     return newOrder;
   }
 }
