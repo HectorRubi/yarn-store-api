@@ -11,12 +11,16 @@ class ProductService {
   }
 
   async find() {
-    const products = await sequelize.models.Product.findAll();
+    const products = await sequelize.models.Product.findAll({
+      include: ['category'],
+    });
     return products;
   }
 
   async findOne(id) {
-    const product = this.products.find((product) => product.id === id);
+    const product = await sequelize.models.Product.findByPk(id, {
+      include: ['category'],
+    });
 
     if (!product) {
       throw boom.notFound('Product not found');
