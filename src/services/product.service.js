@@ -12,10 +12,13 @@ class ProductService {
     this._generate();
   }
 
-  async find() {
-    const products = await Product.findAll({
+  async find({ offset, limit }) {
+    const options = {
       include: ['category'],
-    });
+      limit,
+      offset,
+    };
+    const products = await Product.findAll(options);
     return products;
   }
 
