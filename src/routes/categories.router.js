@@ -4,6 +4,7 @@ const {
   validateSchema,
   validatorHandler,
 } = require('./../middlewares/validator.handler');
+const { checkAdminRole } = require('./../middlewares/auth.handler');
 const {
   createCategorySchema,
   updateCategorySchema,
@@ -26,6 +27,7 @@ router
   })
   .post(
     passport.authenticate('jwt', { session: false }),
+    checkAdminRole,
     async (req, res, next) => {
       try {
         const body = req.body;
