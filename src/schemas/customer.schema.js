@@ -4,7 +4,12 @@ const createCustomerSchema = joi.object({
   name: joi.string().required(),
   lastName: joi.string().required(),
   phone: joi.string().required(),
-  userId: joi.number().required(),
+  user: joi.object({
+    name: joi.string().required(),
+    email: joi.string().required(),
+    password: joi.string().required(),
+    role: joi.string().required(),
+  }),
 });
 
 module.exports = {
