@@ -9,6 +9,15 @@ class OrderService {
     });
   }
 
+  async findByUser(userId) {
+    return await Order.findAll({
+      include: [{ association: 'customer', include: 'user' }],
+      where: {
+        '$customer.user.id$': userId,
+      },
+    });
+  }
+
   async create(data) {
     const newOrder = await Order.create(data);
     return newOrder;
