@@ -9,6 +9,7 @@ const {
   updateCategorySchema,
   idCategorySchema,
 } = require('./../schemas/category.schema');
+const passport = require('passport');
 
 const router = express.Router();
 const categoryService = new CategoryService();
@@ -23,32 +24,40 @@ router
       next(error);
     }
   })
-  .post(async (req, res, next) => {
-    try {
-      const body = req.body;
-      const value = validateSchema(createCategorySchema, body);
-      const category = await categoryService.create(value);
-      res.status(201).json({
-        message: 'created',
-        data: category,
-      });
-    } catch (error) {
-      next(error);
-    }
-  });
+  .post(
+    passport.authenticate('jwt', { session: false }),
+    async (req, res, next) => {
+      try {
+        const body = req.body;
+        const value = validateSchema(createCategorySchema, body);
+        const category = await categoryService.create(value);
+        res.status(201).json({
+          message: 'created',
+          data: category,
+        });
+      } catch (error) {
+        next(error);
+      }
+    },
+  );
 
 router
   .route('/:id')
-  .get(validatorHandler(idCategorySchema, 'params'), async (req, res, next) => {
-    try {
-      const { id } = req.params;
-      const category = await categoryService.findOne(id);
-      res.json(category);
-    } catch (error) {
-      next(error);
-    }
-  })
+  .get(
+    passport.authenticate('jwt', { session: false }),
+    validatorHandler(idCategorySchema, 'params'),
+    async (req, res, next) => {
+      try {
+        const { id } = req.params;
+        const category = await categoryService.findOne(id);
+        res.json(category);
+      } catch (error) {
+        next(error);
+      }
+    },
+  )
   .patch(
+    passport.authenticate('jwt', { session: false }),
     validatorHandler(idCategorySchema, 'params'),
     async (req, res, next) => {
       try {
@@ -66,6 +75,7 @@ router
     },
   )
   .delete(
+    passport.authenticate('jwt', { session: false }),
     validatorHandler(idCategorySchema, 'params'),
     async (req, res, next) => {
       try {
