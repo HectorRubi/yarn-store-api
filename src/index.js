@@ -3,6 +3,7 @@ const path = require('path');
 const cors = require('cors');
 const helmet = require('helmet');
 const routerApi = require('./routes');
+const passportInit = require('./utils/auth');
 const { checkApiKey } = require('./middlewares/auth.handler');
 const {
   logErrors,
@@ -19,6 +20,8 @@ const port = 3000;
 app.use(express.json());
 app.use(cors());
 app.use(helmet());
+
+passportInit();
 
 // Home page Doc
 app.get('/', (req, res) => {
