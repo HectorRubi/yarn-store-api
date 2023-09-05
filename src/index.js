@@ -3,6 +3,7 @@ const path = require('path');
 const cors = require('cors');
 const helmet = require('helmet');
 const routerApi = require('./routes');
+const { checkApiKey } = require('./middlewares/auth.handler');
 const {
   logErrors,
   errorHandler,
@@ -14,7 +15,7 @@ const {
 const app = express();
 const port = 3000;
 
-// Add middleware to allow express recieve data in JSON format
+// Add middleware to allow express receive data in JSON format
 app.use(express.json());
 app.use(cors());
 app.use(helmet());
@@ -22,6 +23,10 @@ app.use(helmet());
 // Home page Doc
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '/public/index.html'));
+});
+
+app.get('/nueva-ruta', checkApiKey, (req, res) => {
+  res.send('Hola soy una nueva ruta');
 });
 
 // Routes
