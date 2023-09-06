@@ -1,6 +1,7 @@
 const express = require('express');
-const { OrderService } = require('./../services/order.service');
 const passport = require('passport');
+
+const { OrderService } = require('./../services/order.service');
 
 const router = express.Router();
 const orderService = new OrderService();
