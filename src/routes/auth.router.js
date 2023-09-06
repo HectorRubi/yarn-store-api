@@ -24,7 +24,17 @@ router
 router.route('/recovery').post(async (req, res, next) => {
   try {
     const { email } = req.body;
-    const rta = await authService.sendMail(email);
+    const rta = await authService.sendRecovery(email);
+    res.json(rta);
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.route('/reset').post(async (req, res, next) => {
+  try {
+    const { token, password } = req.body;
+    const rta = await authService.changePassword(token, password);
     res.json(rta);
   } catch (error) {
     next(error);
