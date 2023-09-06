@@ -21,10 +21,15 @@ const UserSchema = {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  recoveryToken: {
+    allowNull: true,
+    type: DataTypes.STRING,
+    field: 'recovery_token',
+  },
   role: {
     type: DataTypes.STRING,
     allowNull: false,
-    defautlValue: 'customer',
+    defaultValue: 'customer',
   },
   createdAt: {
     type: DataTypes.DATE,
