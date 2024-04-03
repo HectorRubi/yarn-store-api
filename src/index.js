@@ -44,5 +44,5 @@ app.use(errorHandler);
 // Running Server
 app.listen(port, () => {
   // eslint-disable-next-line no-console
-  console.log('Listening on http:localhost:' + port);
+  console.log('Listening on http://localhost:' + port);
 });
